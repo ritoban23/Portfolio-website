@@ -25,8 +25,8 @@ export default function Topbar() {
   return (
     <header className={`header ${scrolled ? 'scrolled' : ''}`}>
       <div className="logo">
-        <Link href="#home" style={{color: 'var(--clr-light)', textDecoration: 'none', fontSize: '1.1rem', fontWeight: '600'}}>
-          Ritoban Dutta
+        <Link href="#home">
+          <Image src="/img/devrito.png" alt="Ritoban Dutta" width={60} height={60} style={{objectFit: 'contain'}} />
         </Link>
       </div>
       

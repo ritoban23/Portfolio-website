@@ -10,6 +10,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/img/devrito.png" type="image/png" />
+        <link rel="shortcut icon" href="/img/devrito.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/img/devrito.png" />
+      </head>
       <body>
         {children}
         <ScrollEffects />
