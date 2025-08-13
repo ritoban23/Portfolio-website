@@ -17,10 +17,21 @@ export default function Topbar() {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false); };
+    const onClickOutside = (e: MouseEvent) => {
+      const target = e.target as Element;
+      if (open && !target.closest('.nav') && !target.closest('.menuBtn')) {
+        console.log('Closing menu due to outside click');
+        setOpen(false);
+      }
+    };
+    
     document.addEventListener('keydown', onKey);
+    document.addEventListener('click', onClickOutside);
     document.body.style.overflow = open ? 'hidden' : '';
+    
     return () => {
       document.removeEventListener('keydown', onKey);
+      document.removeEventListener('click', onClickOutside);
       document.body.style.overflow = '';
     };
   }, [open]);
@@ -65,8 +76,11 @@ export default function Topbar() {
         aria-label="toggle navigation"
         aria-controls="primary-nav"
         aria-expanded={open}
-        onClick={() => setOpen(o => !o)}
-        onTouchEnd={() => setOpen(o => !o)}
+        onClick={(e) => {
+          e.stopPropagation();
+          console.log('Hamburger clicked, current state:', open);
+          setOpen(o => !o);
+        }}
       >
         <span className="hamburger" />
       </button>
@@ -80,22 +94,6 @@ export default function Topbar() {
           <li><Link className="navLink" href="#projects">Projects</Link></li>
           <li><Link className="navLink" href="#contact">Contact</Link></li>
         </ul>
-        
-        {/* Mobile Social Icons */}
-        <div className="social-icons-mobile">
-          <a href="mailto:ankudutt101@gmail.com" aria-label="Email">
-            <FaEnvelope />
-          </a>
-          <a href="https://github.com/ritoban23" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <FaGithub />
-          </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <FaLinkedin />
-          </a>
-          <a href="https://medium.com" target="_blank" rel="noopener noreferrer" aria-label="Medium">
-            <FaMedium />
-          </a>
-        </div>
       </nav>
     </header>
   );

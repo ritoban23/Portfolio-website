@@ -32,8 +32,16 @@ export default function Page() {
         <section id="about" data-section className="reveal">
           <div className="container">
             <h2 className="sectionTitle">about me</h2>
-            <div style={{display:'grid',gridTemplateColumns:'1fr 300px',gap:'3rem',alignItems:'start',marginTop:'2rem'}}>
-              <div>
+            <div className="about-layout">
+              <Image
+                src="/img/pp.jpeg"
+                alt="Portrait"
+                width={300}
+                height={300}
+                style={{borderRadius:'var(--radius)',objectFit:'cover'}}
+                className="about-image"
+              />
+              <div className="about-content">
                 <p style={{color:'var(--clr-neutral)',marginBottom:'1.5rem'}}>
                   I am currently a <strong style={{color:'var(--clr-light)'}}>Software Development Engineer</strong> at <span style={{color:'var(--clr-accent)'}}>Amazon</span>, working in
                   the AWS sector under team Route 53. At the same time, I am
@@ -52,7 +60,6 @@ export default function Page() {
                   Outside of work, I'm interested in following the developments of science. I also play a lot of video games. And make TikToks.
                 </p>
               </div>
-              <Image src="/img/pp.jpeg" alt="Portrait" width={300} height={300} style={{borderRadius:'var(--radius)',objectFit:'cover'}} />
             </div>
           </div>
         </section>
