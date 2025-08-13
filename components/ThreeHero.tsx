@@ -17,6 +17,13 @@ export default function ThreeHero() {
     const DPR = Math.min(window.devicePixelRatio || 1, 2);
     renderer.setPixelRatio(DPR);
     renderer.setSize(window.innerWidth, window.innerHeight, false);
+    
+    // Enable pointer events on the canvas itself
+    renderer.domElement.style.pointerEvents = 'auto';
+    renderer.domElement.style.position = 'absolute';
+    renderer.domElement.style.top = '0';
+    renderer.domElement.style.left = '0';
+    
     container.appendChild(renderer.domElement);
 
     const geometry = new THREE.IcosahedronGeometry(1.05, 1);
@@ -148,15 +155,16 @@ export default function ThreeHero() {
       document.body.style.cursor = 'default';
     };
 
-    // Global event listeners for viewport-wide interaction
-    document.addEventListener('mousedown', onPointerDown);
-    document.addEventListener('mousemove', onPointerMove);
-    document.addEventListener('mouseup', onPointerUp);
+    // Attach event listeners only to the canvas element, not the entire document
+    const canvas = renderer.domElement;
+    canvas.addEventListener('mousedown', onPointerDown);
+    canvas.addEventListener('mousemove', onPointerMove);
+    canvas.addEventListener('mouseup', onPointerUp);
     
-    // Touch events
-    document.addEventListener('touchstart', onPointerDown, { passive: false });
-    document.addEventListener('touchmove', onPointerMove, { passive: false });
-    document.addEventListener('touchend', onPointerUp);
+    // Touch events - only on canvas
+    canvas.addEventListener('touchstart', onPointerDown, { passive: false });
+    canvas.addEventListener('touchmove', onPointerMove, { passive: false });
+    canvas.addEventListener('touchend', onPointerUp);
 
     // Enhanced glow effect with new colors
     const glowMaterial = new THREE.MeshBasicMaterial({
@@ -216,12 +224,18 @@ export default function ThreeHero() {
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener('resize', onResize);
-      document.removeEventListener('mousedown', onPointerDown);
-      document.removeEventListener('mousemove', onPointerMove);
-      document.removeEventListener('mouseup', onPointerUp);
-      document.removeEventListener('touchstart', onPointerDown);
-      document.removeEventListener('touchmove', onPointerMove);
-      document.removeEventListener('touchend', onPointerUp);
+      
+      // Remove event listeners from canvas
+      const canvas = renderer.domElement;
+      if (canvas) {
+        canvas.removeEventListener('mousedown', onPointerDown);
+        canvas.removeEventListener('mousemove', onPointerMove);
+        canvas.removeEventListener('mouseup', onPointerUp);
+        canvas.removeEventListener('touchstart', onPointerDown);
+        canvas.removeEventListener('touchmove', onPointerMove);
+        canvas.removeEventListener('touchend', onPointerUp);
+      }
+      
       document.body.style.cursor = 'default';
       geometry.dispose();
       material.dispose();
@@ -241,7 +255,7 @@ export default function ThreeHero() {
         width: '100vw',
         height: '100vh',
         zIndex: -1,
-        pointerEvents: 'none'
+        pointerEvents: 'none' // Back to 'none' - canvas will handle its own events
       }}
       aria-hidden
     />

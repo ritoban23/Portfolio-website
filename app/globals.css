@@ -21,7 +21,7 @@ section{padding:3.5em 1em}
 .header {
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 1000; /* Increased z-index to ensure header is above everything */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -84,6 +84,8 @@ section{padding:3.5em 1em}
   border: 0;
   cursor: pointer;
   padding: .5rem;
+  position: relative;
+  z-index: 100; /* Ensure hamburger menu is above everything */
 }
 
 .logo {
@@ -101,6 +103,8 @@ section{padding:3.5em 1em}
   display: flex;
   align-items: center;
   gap: 1rem;
+  position: relative;
+  z-index: 100; /* Ensure social icons are above everything */
 }
 
 .social-icons a {

@@ -19,7 +19,10 @@ export default function Topbar() {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false); };
     document.addEventListener('keydown', onKey);
     document.body.style.overflow = open ? 'hidden' : '';
-    return () => { document.removeEventListener('keydown', onKey); document.body.style.overflow = ''; };
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
   }, [open]);
 
   return (
@@ -63,6 +66,7 @@ export default function Topbar() {
         aria-controls="primary-nav"
         aria-expanded={open}
         onClick={() => setOpen(o => !o)}
+        onTouchEnd={() => setOpen(o => !o)}
       >
         <span className="hamburger" />
       </button>
