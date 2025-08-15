@@ -79,7 +79,7 @@ export default function Page() {
             <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(400px,1fr))',gap:'2rem',marginTop:'3rem'}}>
               <div className="project-card">
                 <Image src="/img/repCounterSS.png" alt="Rep Counter Web App Screenshot" width={960} height={540} style={{width:'100%',height:'200px',objectFit:'cover',borderRadius:'var(--radius-sm)',marginBottom:'1.5rem'}} />
-                <h3>tall tales</h3>
+                <h3>Health bot</h3>
                 <p>A multi-player story-telling web game for 3-5 players. Its usage of sockets to allow for concurrent gameplay, connecting friends across the internet.</p>
                 <div className="project-tech">
                   <span>NODE.JS (SOCKET.IO)</span>
@@ -99,7 +99,7 @@ export default function Page() {
               </div>
               <div className="project-card">
                 <Image src="/img/portfolio-03.jpg" alt="Project placeholder" width={960} height={540} style={{width:'100%',height:'200px',objectFit:'cover',borderRadius:'var(--radius-sm)',marginBottom:'1.5rem'}} />
-                <h3>web application</h3>
+                <h3>Wallet geenrator</h3>
                 <p>A full-stack web application with user authentication, real-time features, and responsive design for optimal user experience.</p>
                 <div className="project-tech">
                   <span>REACT</span>
