@@ -4,11 +4,14 @@ import { Suspense } from "react";
 import ThreeHero from "@/components/ThreeHero";
 import Topbar from "@/components/Topbar";
 import ExperienceSection from "@/components/ExperienceSection";
+import ParticleBackground from "@/components/ParticleBackground";
+import AnimatedText from "@/components/AnimatedText";
 
 export default function Page() {
   return (
     <>
       <Topbar />
+      <ParticleBackground />
       <main>
         {/* Home */}
         <section
@@ -36,10 +39,29 @@ export default function Page() {
                 marginBottom: "1rem",
               }}
             >
-              hi, <span style={{ color: "var(--clr-accent)" }}>ritoban</span>{" "}
-              here.
+              <AnimatedText
+                text="hi,"
+                type="fadeIn"
+                delay={500}
+                speed={150}
+              />{" "}
+              <span style={{ color: "var(--clr-accent)" }}>
+                <AnimatedText
+                  text="ritoban"
+                  type="typing"
+                  delay={1000}
+                  speed={150}
+                  className="inline-block"
+                />
+              </span>{" "}
+              <AnimatedText
+                text="here."
+                type="fadeIn"
+                delay={2500}
+                speed={150}
+              />
             </h1>
-            <p
+            <div
               style={{
                 fontSize: "1.25rem",
                 color: "var(--clr-neutral)",
@@ -47,9 +69,13 @@ export default function Page() {
                 fontWeight: "300",
               }}
             >
-              I like creating with purpose and play.
-            </p>
-            <p
+              <AnimatedText
+                text="I like creating with purpose and play."
+                type="slideUp"
+                delay={3000}
+              />
+            </div>
+            <div
               style={{
                 maxWidth: "600px",
                 margin: "0 auto",
@@ -58,11 +84,12 @@ export default function Page() {
                 fontSize: "1.1rem",
               }}
             >
-              I'm a software developer from India who's drawn to big ideas and
-              even bigger user bases.I’m fascinated by industry-leading services
-              and the software that powers them, and I’m dedicated to honing my
-              skills to contribute to projects that reach a wide audience.
-            </p>
+              <AnimatedText
+                text="I'm a software developer from India who's drawn to big ideas and even bigger user bases. I'm fascinated by industry-leading services and the software that powers them, and I'm dedicated to honing my skills to contribute to projects that reach a wide audience."
+                type="slideUp"
+                delay={3500}
+              />
+            </div>
           </div>
         </section>
 
@@ -104,129 +131,90 @@ export default function Page() {
                 >
                   Here are some technologies I have been working with:
                 </p>
-                <div class="tech-grid">
-                  <div class="tech-category">
-                    <h3>Programming and Scripting Languages</h3>
-                    <ul>
-                      <li><i className="fab fa-python"></i> Python</li>
-                      <li><i className="fab fa-js-square"></i> JavaScript ES6+</li>
-                      <li><i className="fas fa-code"></i> TypeScript</li>
-                      <li><i className="fab fa-java"></i> Java</li>
-                      <li><i className="fas fa-file-code"></i> C++</li>
-                      <li><i className="fab fa-php"></i> PHP</li>
-                    </ul>
-                  </div>
-                  <div class="tech-category">
-                    <h3>Frameworks and Libraries</h3>
-                    <div className="tech-subcategory">
-                      <h4>Frontend</h4>
-                      <ul>
-                        <li><i className="fab fa-react"></i> React.js</li>
-                        <li><i className="fab fa-angular"></i> Angular</li>
-                        <li><i className="fab fa-vuejs"></i> Vue.js</li>
-                        <li><i className="fab fa-svelte"></i> Svelte</li>
-                        <li><i className="fab fa-html5"></i> HTML5</li>
-                        <li><i className="fab fa-css3-alt"></i> CSS3</li>
-                        <li><i className="fab fa-bootstrap"></i> Bootstrap</li>
-                      </ul>
-                    </div>
-                    <div className="tech-subcategory">
-                      <h4>Backend</h4>
-                      <ul>
-                        <li><i className="fab fa-node-js"></i> Node.js</li>
-                        <li><i className="fas fa-server"></i> Express.js</li>
-                        <li><i className="fab fa-laravel"></i> Laravel</li>
-                        <li><i className="fab fa-symfony"></i> Symfony</li>
-                      </ul>
-                    </div>
-                    <div className="tech-subcategory">
-                      <h4>Data Science</h4>
-                      <ul>
-                        <li><i className="fas fa-chart-line"></i> NumPy</li>
-                        <li><i className="fas fa-table"></i> Pandas</li>
-                        <li><i className="fas fa-brain"></i> Scikit-learn</li>
-                        <li><i className="fas fa-robot"></i> TensorFlow</li>
-                        <li><i className="fas fa-robot"></i> PyTorch</li>
-                      </ul>
+                <div className="tech-compact">
+                  {/* Programming Languages */}
+                  <div className="tech-row">
+                    <span className="tech-label">Languages:</span>
+                    <div className="tech-items">
+                      {/* <span><i className="fab fa-python"></i> Python</span> */}
+                      <span><i className="fab fa-js-square"></i> JavaScript</span>
+                      <span><i className="fas fa-code"></i> TypeScript</span>
+                      {/* <span><i className="fab fa-java"></i> Java</span> */}
+                      <span><i className="fas fa-file-code"></i> C++</span>
+                      <span><i className="fab fa-php"></i> PHP</span>
                     </div>
                   </div>
-                  <div className="tech-category">
-                    <h3>Databases and Data Management</h3>
-                    <div className="tech-subcategory">
-                      <h4>Relational</h4>
-                      <ul>
-                        <li><i className="fas fa-database"></i> MySQL</li>
-                        <li><i className="fas fa-database"></i> PostgreSQL</li>
-                      </ul>
-                    </div>
-                    <div className="tech-subcategory">
-                      <h4>NoSQL</h4>
-                      <ul>
-                        <li><i className="fas fa-database"></i> MongoDB</li>
-                        <li><i className="fas fa-database"></i> Redis</li>
-                        <li><i className="fas fa-database"></i> Firebase</li>
-                      </ul>
+
+                  {/* Frontend Frameworks */}
+                  <div className="tech-row">
+                    <span className="tech-label">Frontend:</span>
+                    <div className="tech-items">
+                      <span><i className="fab fa-react"></i> React.js</span>
+                      {/* <span><i className="fab fa-angular"></i> Angular</span>
+                      <span><i className="fab fa-vuejs"></i> Vue.js</span>
+                      <span><i className="fab fa-svelte"></i> Svelte</span> */}
+                      <span><i className="fab fa-html5"></i> HTML5</span>
+                      <span><i className="fab fa-css3-alt"></i> CSS3</span>
+                      
                     </div>
                   </div>
-                  <div className="tech-category">
-                    <h3>Cloud and DevOps Tools</h3>
-                    <div className="tech-subcategory">
-                      <h4>Cloud Platforms</h4>
-                      <ul>
-                        <li><i className="fab fa-aws"></i> AWS</li>
-                        <li><i className="fab fa-google"></i> Google Cloud (GCP)</li>
-                        <li><i className="fab fa-microsoft"></i> Azure</li>
-                        <li><i className="fab fa-heroku"></i> Heroku</li>
-                      </ul>
-                    </div>
-                    <div className="tech-subcategory">
-                      <h4>Containers and Orchestration</h4>
-                      <ul>
-                        <li><i className="fab fa-docker"></i> Docker</li>
-                        <li><i className="fas fa-dharmachakra"></i> Kubernetes</li>
-                      </ul>
-                    </div>
-                    <div className="tech-subcategory">
-                      <h4>CI/CD</h4>
-                      <ul>
-                        <li><i className="fab fa-jenkins"></i> Jenkins</li>
-                        <li><i className="fab fa-gitlab"></i> GitLab CI</li>
-                        <li><i className="fab fa-github"></i> GitHub Actions</li>
-                      </ul>
+
+                  {/* Backend Frameworks */}
+                  <div className="tech-row">
+                    <span className="tech-label">Backend:</span>
+                    <div className="tech-items">
+                      <span><i className="fab fa-node-js"></i> Node.js</span>
+                      <span><i className="fas fa-server"></i> Express.js</span>
+                      {/* <span><i className="fab fa-laravel"></i> Laravel</span>
+                      <span><i className="fab fa-symfony"></i> Symfony</span> */}
                     </div>
                   </div>
-                  <div className="tech-category">
-                    <h3>Other Tools and Technologies</h3>
-                    <div className="tech-subcategory">
-                      <h4>Version Control</h4>
-                      <ul>
-                        <li><i className="fab fa-git-alt"></i> Git & GitHub</li>
-                      </ul>
+
+                  {/* Databases */}
+                  <div className="tech-row">
+                    <span className="tech-label">Databases:</span>
+                    <div className="tech-items">
+                      <span><i className="fas fa-database"></i> MySQL</span>
+                      <span><i className="fas fa-database"></i> PostgreSQL</span>
+                      <span><i className="fas fa-database"></i> MongoDB</span>
+                      <span><i className="fas fa-database"></i> Redis</span>
+                      <span><i className="fas fa-database"></i> Firebase</span>
                     </div>
-                    <div className="tech-subcategory">
-                      <h4>Project Management</h4>
-                      <ul>
-                        <li><i className="fab fa-jira"></i> Jira</li>
-                        <li><i className="fab fa-trello"></i> Trello</li>
-                        <li><i className="fab fa-asana"></i> Asana</li>
-                      </ul>
+                  </div>
+
+                  {/* Data Science */}
+                  {/* <div className="tech-row">
+                    <span className="tech-label">Data Science:</span>
+                    <div className="tech-items">
+                      <span><i className="fas fa-chart-line"></i> NumPy</span>
+                      <span><i className="fas fa-table"></i> Pandas</span>
+                      <span><i className="fas fa-brain"></i> Scikit-learn</span>
+                      <span><i className="fas fa-robot"></i> TensorFlow</span>
+                      <span><i className="fas fa-robot"></i> PyTorch</span>
                     </div>
-                    <div className="tech-subcategory">
-                      <h4>UI/UX Design</h4>
-                      <ul>
-                        <li><i className="fab fa-figma"></i> Figma</li>
-                        <li><i className="fab fa-adobe"></i> Adobe XD</li>
-                        <li><i className="fab fa-sketch"></i> Sketch</li>
-                      </ul>
+                  </div> */}
+
+                  {/* Cloud & DevOps */}
+                  <div className="tech-row">
+                    <span className="tech-label">Cloud/DevOps:</span>
+                    <div className="tech-items">
+                      <span><i className="fab fa-aws"></i> AWS</span>
+                      <span><i className="fab fa-docker"></i> Docker</span>
+                      <span><i className="fab fa-git-alt"></i> Git</span>
+                      <span><i className="fab fa-github"></i> GitHub</span>
+                      {/* <span><i className="fab fa-jenkins"></i> Jenkins</span> */}
                     </div>
-                    <div className="tech-subcategory">
-                      <h4>Operating Systems</h4>
-                      <ul>
-                        <li><i className="fab fa-linux"></i> Linux</li>
-                        <li><i className="fab fa-windows"></i> Windows</li>
-                        <li><i className="fab fa-apple"></i> macOS</li>
-                        <li><i className="fas fa-terminal"></i> Command Line</li>
-                      </ul>
+                  </div>
+
+                  {/* Tools & Design */}
+                  <div className="tech-row">
+                    <span className="tech-label">Tools:</span>
+                    <div className="tech-items">
+                      <span><i className="fab fa-figma"></i> Figma</span>
+                      {/* <span><i className="fab fa-jira"></i> Jira</span>
+                      <span><i className="fab fa-trello"></i> Trello</span> */}
+                      <span><i className="fab fa-linux"></i> Linux</span>
+                      <span><i className="fab fa-windows"></i> Windows</span>
                     </div>
                   </div>
                 </div>

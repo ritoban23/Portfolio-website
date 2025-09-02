@@ -71,6 +71,12 @@ export default function ThreeHero() {
     const stiffness = 0.3;
     const positionStiffness = 0.15;
     const autoRotationSpeed = 0.005;
+
+    // Mouse interaction for camera and lighting
+    let mouseX = 0, mouseY = 0;
+    let targetCameraX = 0, targetCameraY = 0;
+    let currentCameraX = 0, currentCameraY = 0;
+    const cameraStiffness = 0.05;
     
     // Mouse/touch interaction handlers with viewport dragging
     const onPointerDown = (ev: MouseEvent | TouchEvent) => {
@@ -103,46 +109,53 @@ export default function ThreeHero() {
     const onPointerMove = (ev: MouseEvent | TouchEvent) => {
       const clientX = 'touches' in ev ? ev.touches[0].clientX : ev.clientX;
       const clientY = 'touches' in ev ? ev.touches[0].clientY : ev.clientY;
-      
+
+      // Update mouse position for camera interaction
+      const rect = container.getBoundingClientRect();
+      mouseX = (clientX - rect.left) / rect.width;
+      mouseY = (clientY - rect.top) / rect.height;
+
+      // Subtle camera movement based on mouse position
+      targetCameraX = (mouseX - 0.5) * 0.1;
+      targetCameraY = (mouseY - 0.5) * 0.1;
+
       if (isDragging) {
         if (isDraggingPosition) {
           // Drag sphere position across viewport
-          const rect = container.getBoundingClientRect();
           const mouseX = ((clientX - rect.left) / rect.width) * 2 - 1;
           const mouseY = -((clientY - rect.top) / rect.height) * 2 + 1;
-          
+
           targetSpherePosition.x = Math.max(-1.5, Math.min(1.5, mouseX));
           targetSpherePosition.y = Math.max(-1.5, Math.min(1.5, mouseY));
         } else {
           // Rotate sphere
           const deltaX = clientX - lastMouseX;
           const deltaY = clientY - lastMouseY;
-          
+
           targetRY += deltaX * 0.01;
           targetRX -= deltaY * 0.01;
         }
-        
+
         lastMouseX = clientX;
         lastMouseY = clientY;
       } else {
         // Subtle hover effect when not dragging
-        const rect = container.getBoundingClientRect();
-        const x = (clientX - rect.left) / rect.width;
-        const y = (clientY - rect.top) / rect.height;
-        
+        const x = mouseX;
+        const y = mouseY;
+
         // Check if hovering near sphere
-        const mouseX = (x * 2 - 1);
-        const mouseY = -(y * 2 - 1);
+        const mouseXPos = (x * 2 - 1);
+        const mouseYPos = -(y * 2 - 1);
         const distance = Math.sqrt(
-          Math.pow(mouseX - spherePosition.x, 2) + Math.pow(mouseY - spherePosition.y, 2)
+          Math.pow(mouseXPos - spherePosition.x, 2) + Math.pow(mouseYPos - spherePosition.y, 2)
         );
-        
+
         if (distance < 0.3) {
           document.body.style.cursor = 'grab';
         } else {
           document.body.style.cursor = 'default';
         }
-        
+
         // Subtle rotation on hover
         targetRY += (x - 0.5) * 0.02;
         targetRX += (0.5 - y) * 0.02;
@@ -179,46 +192,83 @@ export default function ThreeHero() {
     );
     scene.add(glowMesh);
 
-    const animate = () => {
-      // Continuous auto-rotation when not being dragged
-      if (!isDragging) {
-        autoRotationY += autoRotationSpeed;
+    let lastTime = 0;
+    const targetFPS = 60;
+    const frameInterval = 1000 / targetFPS;
+
+    const animate = (currentTime: number) => {
+      // Pause animation if page is not visible
+      if (document.hidden) {
+        raf = requestAnimationFrame(animate);
+        return;
       }
 
-      // Spring physics for position movement
-      const velPosX = (targetSpherePosition.x - spherePosition.x) * positionStiffness;
-      const velPosY = (targetSpherePosition.y - spherePosition.y) * positionStiffness;
-      spherePosition.x += velPosX;
-      spherePosition.y += velPosY;
+      if (currentTime - lastTime >= frameInterval) {
+        // Continuous auto-rotation when not being dragged
+        if (!isDragging) {
+          autoRotationY += autoRotationSpeed;
+        }
 
-      // Spring physics for rotation
-      const velRX = (targetRX - currentRX) * stiffness;
-      const velRY = (targetRY - currentRY) * stiffness;
-      currentRX += velRX;
-      currentRY += velRY;
-      currentRX *= (1 - damping);
-      currentRY *= (1 - damping);
-      
-      // Apply position to mesh
-      mesh.position.x = spherePosition.x;
-      mesh.position.y = spherePosition.y;
-      
-      // Apply rotations with auto-rotation
-      mesh.rotation.x = currentRX;
-      mesh.rotation.y = currentRY + autoRotationY;
-      
-      // Update glow mesh position and rotation
-      glowMesh.position.x = spherePosition.x;
-      glowMesh.position.y = spherePosition.y;
-      glowMesh.rotation.x = currentRX * 1.1;
-      glowMesh.rotation.y = (currentRY + autoRotationY) * 1.1;
-      
-      renderer.render(scene, camera);
+        // Spring physics for position movement
+        const velPosX = (targetSpherePosition.x - spherePosition.x) * positionStiffness;
+        const velPosY = (targetSpherePosition.y - spherePosition.y) * positionStiffness;
+        spherePosition.x += velPosX;
+        spherePosition.y += velPosY;
+
+        // Spring physics for rotation
+        const velRX = (targetRX - currentRX) * stiffness;
+        const velRY = (targetRY - currentRY) * stiffness;
+        currentRX += velRX;
+        currentRY += velRY;
+        currentRX *= (1 - damping);
+        currentRY *= (1 - damping);
+
+        // Spring physics for camera movement
+        const velCamX = (targetCameraX - currentCameraX) * cameraStiffness;
+        const velCamY = (targetCameraY - currentCameraY) * cameraStiffness;
+        currentCameraX += velCamX;
+        currentCameraY += velCamY;
+
+        // Apply camera movement
+        camera.position.x = currentCameraX;
+        camera.position.y = currentCameraY;
+        camera.lookAt(0, 0, 0);
+
+        // Dynamic lighting based on mouse position
+        const lightIntensity1 = 1.2 + (mouseX - 0.5) * 0.3;
+        const lightIntensity2 = 0.8 + (mouseY - 0.5) * 0.2;
+        light1.intensity = Math.max(0.5, Math.min(2.0, lightIntensity1));
+        light2.intensity = Math.max(0.3, Math.min(1.5, lightIntensity2));
+
+        // Move lights slightly based on mouse
+        light1.position.x = 5 + (mouseX - 0.5) * 2;
+        light1.position.y = 5 + (mouseY - 0.5) * 2;
+        light2.position.x = -5 + (mouseX - 0.5) * 1.5;
+        light2.position.z = 2 + (mouseY - 0.5) * 1;
+
+        // Apply position to mesh
+        mesh.position.x = spherePosition.x;
+        mesh.position.y = spherePosition.y;
+
+        // Apply rotations with auto-rotation
+        mesh.rotation.x = currentRX;
+        mesh.rotation.y = currentRY + autoRotationY;
+
+        // Update glow mesh position and rotation
+        glowMesh.position.x = spherePosition.x;
+        glowMesh.position.y = spherePosition.y;
+        glowMesh.rotation.x = currentRX * 1.1;
+        glowMesh.rotation.y = (currentRY + autoRotationY) * 1.1;
+
+        renderer.render(scene, camera);
+        lastTime = currentTime;
+      }
+
       raf = requestAnimationFrame(animate);
     };
 
     onResize();
-    animate();
+    raf = requestAnimationFrame(animate);
     window.addEventListener('resize', onResize);
 
     return () => {
