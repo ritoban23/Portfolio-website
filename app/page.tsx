@@ -86,19 +86,15 @@ export default function Page() {
                     marginBottom: "1.5rem",
                   }}
                 >
-                  Right now, I'm working across different areas from full-stack
-                  web development to blockchain integrations, AI applications,
-                  and creative coding. Alongside this, I'm a senior at{" "}
+                  Hello! I'm Ritoban, a passionate software developer with a knack for creating dynamic and user-friendly web applications. My journey in tech has been a thrilling ride, from building full-stack applications to exploring the realms of blockchain, AI, and creative coding. I am currently a senior at{" "}
                   <span style={{ color: "var(--clr-accent)" }}>
                     KIIT University
                   </span>
-                  , majoring in{" "}
+                  , pursuing a degree in{" "}
                   <strong style={{ color: "var(--clr-light)" }}>
                     Computer Science
                   </strong>
-                  . I've also contributed to open-source projects and built
-                  tools/products that combine practicality with a bit of
-                  experimentation.
+                  . I thrive on challenges and am always eager to learn new technologies and contribute to impactful projects.
                 </p>
                 <p
                   style={{
@@ -108,20 +104,39 @@ export default function Page() {
                 >
                   Here are some technologies I have been working with:
                 </p>
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
-                    gap: "0.5rem",
-                    color: "var(--clr-neutral)",
-                  }}
-                >
-                  <div>▸ TypeScript</div>
-                  <div>▸ Node.js</div>
-                  <div>▸ React.js</div>
-                  <div>▸ Devops</div>
-                  <div>▸ JavaScript ES6+</div>
-                  <div>▸ Go</div>
+                <div className="tech-grid">
+                  <div className="tech-category">
+                    <h3>Frontend</h3>
+                    <ul>
+                      <li><i className="fab fa-react"></i> React.js</li>
+                      <li><i className="fab fa-js-square"></i> JavaScript ES6+</li>
+                      <li><i className="fab fa-html5"></i> HTML5 & CSS3</li>
+                    </ul>
+                  </div>
+                  <div className="tech-category">
+                    <h3>Backend</h3>
+                    <ul>
+                      <li><i className="fab fa-node-js"></i> Node.js</li>
+                      <li><i className="fab fa-python"></i> Python</li>
+                      <li><i className="fas fa-database"></i> MongoDB</li>
+                    </ul>
+                  </div>
+                  <div className="tech-category">
+                    <h3>DevOps</h3>
+                    <ul>
+                      <li><i className="fab fa-docker"></i> Docker</li>
+                      <li><i className="fab fa-aws"></i> AWS</li>
+                      <li><i className="fas fa-cogs"></i> CI/CD</li>
+                    </ul>
+                  </div>
+                  <div className="tech-category">
+                    <h3>Tools</h3>
+                    <ul>
+                      <li><i className="fab fa-git-alt"></i> Git & GitHub</li>
+                      <li><i className="fab fa-figma"></i> Figma</li>
+                      <li><i className="fas fa-terminal"></i> Command Line</li>
+                    </ul>
+                  </div>
                 </div>
                 <p style={{ color: "var(--clr-neutral)", marginTop: "1.5rem" }}>
                   When I’m not coding, I’m usually side-questing: dabbling in
@@ -133,13 +148,15 @@ export default function Page() {
           </div>
         </section>
 
-        {/* Experience */}
+        {/* Experience - Commented Out */}
+        {/*
         <section id="experience" data-section className="myServices reveal">
           <div className="container">
             <h2 className="sectionTitle">experience</h2>
             <ExperienceSection />
           </div>
         </section>
+        */}
 
         {/* Projects */}
         <section id="projects" data-section className="myWork reveal">
@@ -229,6 +246,66 @@ export default function Page() {
                   <span>NODE.JS</span>
                   <span>POSTGRESQL</span>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Certifications */}
+        <section id="certifications" data-section className="myWork reveal">
+          <div className="container">
+            <h2 className="sectionTitle">certifications</h2>
+            <div className="cert-grid">
+              <div className="cert-card">
+                <Image
+                  src="/img/portfolio-01.jpg"
+                  alt="Certification placeholder"
+                  width={300}
+                  height={200}
+                  style={{
+                    width: "100%",
+                    height: "150px",
+                    objectFit: "cover",
+                    borderRadius: "var(--radius-sm)",
+                    marginBottom: "1rem",
+                  }}
+                />
+                <h4>Certification Name</h4>
+                <p>Issued by: Issuing Body</p>
+              </div>
+              <div className="cert-card">
+                <Image
+                  src="/img/portfolio-02.jpg"
+                  alt="Certification placeholder"
+                  width={300}
+                  height={200}
+                  style={{
+                    width: "100%",
+                    height: "150px",
+                    objectFit: "cover",
+                    borderRadius: "var(--radius-sm)",
+                    marginBottom: "1rem",
+                  }}
+                />
+                <h4>Certification Name</h4>
+                <p>Issued by: Issuing Body</p>
+              </div>
+              <div className="cert-card">
+                <Image
+                  src="/img/portfolio-03.jpg"
+                  alt="Certification placeholder"
+                  width={300}
+                  height={200}
+                  style={{
+                    width: "100%",
+                    height: "150px",
+                    objectFit: "cover",
+                    borderRadius: "var(--radius-sm)",
+                    marginBottom: "1rem",
+                  }}
+                />
+                <h4>Certification Name</h4>
+                <p>Issued by: Issuing Body</p>
               </div>
             </div>
           </div>

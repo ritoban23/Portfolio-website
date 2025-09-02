@@ -471,3 +471,70 @@ section{padding:5rem 1rem}
     grid-row: 2;
   }
 }
+
+/* Tech grid */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.tech-category h3 {
+  color: var(--clr-accent);
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.tech-category ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tech-category li {
+  color: var(--clr-neutral);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.tech-category li i {
+  margin-right: 0.75rem;
+  color: var(--clr-accent);
+  font-size: 1.2rem;
+}
+
+/* Certifications */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.cert-card {
+  background: rgba(248, 237, 247, 0.08);
+  border: 1px solid rgba(248, 237, 247, 0.1);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-5px);
+  background: rgba(248, 237, 247, 0.15);
+  box-shadow: 0 20px 40px rgba(89, 35, 97, 0.3);
+}
+
+.cert-card h4 {
+  color: var(--clr-light);
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+.cert-card p {
+  color: var(--clr-neutral);
+  font-size: 0.9rem;
+  margin: 0;
+}
