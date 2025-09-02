@@ -104,38 +104,130 @@ export default function Page() {
                 >
                   Here are some technologies I have been working with:
                 </p>
-                <div className="tech-grid">
-                  <div className="tech-category">
-                    <h3>Frontend</h3>
+                <div class="tech-grid">
+                  <div class="tech-category">
+                    <h3>Programming and Scripting Languages</h3>
                     <ul>
-                      <li><i className="fab fa-react"></i> React.js</li>
-                      <li><i className="fab fa-js-square"></i> JavaScript ES6+</li>
-                      <li><i className="fab fa-html5"></i> HTML5 & CSS3</li>
-                    </ul>
-                  </div>
-                  <div className="tech-category">
-                    <h3>Backend</h3>
-                    <ul>
-                      <li><i className="fab fa-node-js"></i> Node.js</li>
                       <li><i className="fab fa-python"></i> Python</li>
-                      <li><i className="fas fa-database"></i> MongoDB</li>
+                      <li><i className="fab fa-js-square"></i> JavaScript ES6+</li>
+                      <li><i className="fas fa-code"></i> TypeScript</li>
+                      <li><i className="fab fa-java"></i> Java</li>
+                      <li><i className="fas fa-file-code"></i> C++</li>
+                      <li><i className="fab fa-php"></i> PHP</li>
                     </ul>
                   </div>
-                  <div className="tech-category">
-                    <h3>DevOps</h3>
-                    <ul>
-                      <li><i className="fab fa-docker"></i> Docker</li>
-                      <li><i className="fab fa-aws"></i> AWS</li>
-                      <li><i className="fas fa-cogs"></i> CI/CD</li>
-                    </ul>
+                  <div class="tech-category">
+                    <h3>Frameworks and Libraries</h3>
+                    <div className="tech-subcategory">
+                      <h4>Frontend</h4>
+                      <ul>
+                        <li><i className="fab fa-react"></i> React.js</li>
+                        <li><i className="fab fa-angular"></i> Angular</li>
+                        <li><i className="fab fa-vuejs"></i> Vue.js</li>
+                        <li><i className="fab fa-svelte"></i> Svelte</li>
+                        <li><i className="fab fa-html5"></i> HTML5</li>
+                        <li><i className="fab fa-css3-alt"></i> CSS3</li>
+                        <li><i className="fab fa-bootstrap"></i> Bootstrap</li>
+                      </ul>
+                    </div>
+                    <div className="tech-subcategory">
+                      <h4>Backend</h4>
+                      <ul>
+                        <li><i className="fab fa-node-js"></i> Node.js</li>
+                        <li><i className="fas fa-server"></i> Express.js</li>
+                        <li><i className="fab fa-laravel"></i> Laravel</li>
+                        <li><i className="fab fa-symfony"></i> Symfony</li>
+                      </ul>
+                    </div>
+                    <div className="tech-subcategory">
+                      <h4>Data Science</h4>
+                      <ul>
+                        <li><i className="fas fa-chart-line"></i> NumPy</li>
+                        <li><i className="fas fa-table"></i> Pandas</li>
+                        <li><i className="fas fa-brain"></i> Scikit-learn</li>
+                        <li><i className="fas fa-robot"></i> TensorFlow</li>
+                        <li><i className="fas fa-robot"></i> PyTorch</li>
+                      </ul>
+                    </div>
                   </div>
                   <div className="tech-category">
-                    <h3>Tools</h3>
-                    <ul>
-                      <li><i className="fab fa-git-alt"></i> Git & GitHub</li>
-                      <li><i className="fab fa-figma"></i> Figma</li>
-                      <li><i className="fas fa-terminal"></i> Command Line</li>
-                    </ul>
+                    <h3>Databases and Data Management</h3>
+                    <div className="tech-subcategory">
+                      <h4>Relational</h4>
+                      <ul>
+                        <li><i className="fas fa-database"></i> MySQL</li>
+                        <li><i className="fas fa-database"></i> PostgreSQL</li>
+                      </ul>
+                    </div>
+                    <div className="tech-subcategory">
+                      <h4>NoSQL</h4>
+                      <ul>
+                        <li><i className="fas fa-database"></i> MongoDB</li>
+                        <li><i className="fas fa-database"></i> Redis</li>
+                        <li><i className="fas fa-database"></i> Firebase</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="tech-category">
+                    <h3>Cloud and DevOps Tools</h3>
+                    <div className="tech-subcategory">
+                      <h4>Cloud Platforms</h4>
+                      <ul>
+                        <li><i className="fab fa-aws"></i> AWS</li>
+                        <li><i className="fab fa-google"></i> Google Cloud (GCP)</li>
+                        <li><i className="fab fa-microsoft"></i> Azure</li>
+                        <li><i className="fab fa-heroku"></i> Heroku</li>
+                      </ul>
+                    </div>
+                    <div className="tech-subcategory">
+                      <h4>Containers and Orchestration</h4>
+                      <ul>
+                        <li><i className="fab fa-docker"></i> Docker</li>
+                        <li><i className="fas fa-dharmachakra"></i> Kubernetes</li>
+                      </ul>
+                    </div>
+                    <div className="tech-subcategory">
+                      <h4>CI/CD</h4>
+                      <ul>
+                        <li><i className="fab fa-jenkins"></i> Jenkins</li>
+                        <li><i className="fab fa-gitlab"></i> GitLab CI</li>
+                        <li><i className="fab fa-github"></i> GitHub Actions</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="tech-category">
+                    <h3>Other Tools and Technologies</h3>
+                    <div className="tech-subcategory">
+                      <h4>Version Control</h4>
+                      <ul>
+                        <li><i className="fab fa-git-alt"></i> Git & GitHub</li>
+                      </ul>
+                    </div>
+                    <div className="tech-subcategory">
+                      <h4>Project Management</h4>
+                      <ul>
+                        <li><i className="fab fa-jira"></i> Jira</li>
+                        <li><i className="fab fa-trello"></i> Trello</li>
+                        <li><i className="fab fa-asana"></i> Asana</li>
+                      </ul>
+                    </div>
+                    <div className="tech-subcategory">
+                      <h4>UI/UX Design</h4>
+                      <ul>
+                        <li><i className="fab fa-figma"></i> Figma</li>
+                        <li><i className="fab fa-adobe"></i> Adobe XD</li>
+                        <li><i className="fab fa-sketch"></i> Sketch</li>
+                      </ul>
+                    </div>
+                    <div className="tech-subcategory">
+                      <h4>Operating Systems</h4>
+                      <ul>
+                        <li><i className="fab fa-linux"></i> Linux</li>
+                        <li><i className="fab fa-windows"></i> Windows</li>
+                        <li><i className="fab fa-apple"></i> macOS</li>
+                        <li><i className="fas fa-terminal"></i> Command Line</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
                 <p style={{ color: "var(--clr-neutral)", marginTop: "1.5rem" }}>
@@ -306,6 +398,36 @@ export default function Page() {
                 />
                 <h4>Certification Name</h4>
                 <p>Issued by: Issuing Body</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Achievements */}
+        <section id="achievements" data-section className="myWork reveal">
+          <div className="container">
+            <h2 className="sectionTitle">achievements</h2>
+            <div className="achievements-grid">
+              <div className="achievement-card">
+                <div className="achievement-icon">
+                  <i className="fas fa-trophy"></i>
+                </div>
+                <h3>Achievement Title 1</h3>
+                <p>A short description of the achievement. This can be a competition you won, a certification you earned, or a project you are proud of.</p>
+              </div>
+              <div className="achievement-card">
+                <div className="achievement-icon">
+                  <i className="fas fa-award"></i>
+                </div>
+                <h3>Achievement Title 2</h3>
+                <p>A short description of the achievement. This can be a competition you won, a certification you earned, or a project you are proud of.</p>
+              </div>
+              <div className="achievement-card">
+                <div className="achievement-icon">
+                  <i className="fas fa-medal"></i>
+                </div>
+                <h3>Achievement Title 3</h3>
+                <p>A short description of the achievement. This can be a competition you won, a certification you earned, or a project you are proud of.</p>
               </div>
             </div>
           </div>
