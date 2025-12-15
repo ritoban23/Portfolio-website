@@ -6,6 +6,9 @@ import Topbar from "@/components/Topbar";
 import ExperienceSection from "@/components/ExperienceSection";
 import ParticleBackground from "@/components/ParticleBackground";
 import AnimatedText from "@/components/AnimatedText";
+import ShowcaseWrapper from "@/components/ShowcaseWrapper";
+import WinLogGrid from "@/components/WinLogGrid";
+import BackToTop from "@/components/BackToTop";
 
 export default function Page() {
   return (
@@ -136,85 +139,42 @@ export default function Page() {
                   <div className="tech-row">
                     <span className="tech-label">Languages:</span>
                     <div className="tech-items">
-                      {/* <span><i className="fab fa-python"></i> Python</span> */}
                       <span><i className="fab fa-js-square"></i> JavaScript</span>
                       <span><i className="fas fa-code"></i> TypeScript</span>
-                      {/* <span><i className="fab fa-java"></i> Java</span> */}
+                      <span><i className="fab fa-html5"></i> HTML</span>
+                      <span><i className="fab fa-css3-alt"></i> CSS</span>
+                      <span><i className="fas fa-database"></i> SQL</span>
                       <span><i className="fas fa-file-code"></i> C++</span>
-                      <span><i className="fab fa-php"></i> PHP</span>
+                      <span><i className="fab fa-python"></i> Python</span>
+                      <span><i className="fab fa-node-js"></i> NodeJS</span>
                     </div>
                   </div>
 
-                  {/* Frontend Frameworks */}
+                  {/* Frameworks */}
                   <div className="tech-row">
-                    <span className="tech-label">Frontend:</span>
+                    <span className="tech-label">Frameworks:</span>
                     <div className="tech-items">
-                      <span><i className="fab fa-react"></i> React.js</span>
-                      {/* <span><i className="fab fa-angular"></i> Angular</span>
-                      <span><i className="fab fa-vuejs"></i> Vue.js</span>
-                      <span><i className="fab fa-svelte"></i> Svelte</span> */}
-                      <span><i className="fab fa-html5"></i> HTML5</span>
-                      <span><i className="fab fa-css3-alt"></i> CSS3</span>
-                      
-                    </div>
-                  </div>
-
-                  {/* Backend Frameworks */}
-                  <div className="tech-row">
-                    <span className="tech-label">Backend:</span>
-                    <div className="tech-items">
-                      <span><i className="fab fa-node-js"></i> Node.js</span>
-                      <span><i className="fas fa-server"></i> Express.js</span>
-                      {/* <span><i className="fab fa-laravel"></i> Laravel</span>
-                      <span><i className="fab fa-symfony"></i> Symfony</span> */}
-                    </div>
-                  </div>
-
-                  {/* Databases */}
-                  <div className="tech-row">
-                    <span className="tech-label">Databases:</span>
-                    <div className="tech-items">
-                      <span><i className="fas fa-database"></i> MySQL</span>
+                      <span><i className="fab fa-react"></i> React/NextJS</span>
+                      <span><i className="fas fa-server"></i> ExpressJS</span>
                       <span><i className="fas fa-database"></i> PostgreSQL</span>
                       <span><i className="fas fa-database"></i> MongoDB</span>
-                      <span><i className="fas fa-database"></i> Redis</span>
-                      <span><i className="fas fa-database"></i> Firebase</span>
+                      <span><i className="fab fa-css3-alt"></i> Tailwind CSS</span>
                     </div>
                   </div>
 
-                  {/* Data Science */}
-                  {/* <div className="tech-row">
-                    <span className="tech-label">Data Science:</span>
-                    <div className="tech-items">
-                      <span><i className="fas fa-chart-line"></i> NumPy</span>
-                      <span><i className="fas fa-table"></i> Pandas</span>
-                      <span><i className="fas fa-brain"></i> Scikit-learn</span>
-                      <span><i className="fas fa-robot"></i> TensorFlow</span>
-                      <span><i className="fas fa-robot"></i> PyTorch</span>
-                    </div>
-                  </div> */}
-
-                  {/* Cloud & DevOps */}
-                  <div className="tech-row">
-                    <span className="tech-label">Cloud/DevOps:</span>
-                    <div className="tech-items">
-                      <span><i className="fab fa-aws"></i> AWS</span>
-                      <span><i className="fab fa-docker"></i> Docker</span>
-                      <span><i className="fab fa-git-alt"></i> Git</span>
-                      <span><i className="fab fa-github"></i> GitHub</span>
-                      {/* <span><i className="fab fa-jenkins"></i> Jenkins</span> */}
-                    </div>
-                  </div>
-
-                  {/* Tools & Design */}
+                  {/* Tools */}
                   <div className="tech-row">
                     <span className="tech-label">Tools:</span>
                     <div className="tech-items">
+                      <span><i className="fab fa-git-alt"></i> Git</span>
+                      <span><i className="fab fa-github"></i> GitHub</span>
+                      <span><i className="fas fa-code"></i> VS Code</span>
+                      <span><i className="fab fa-linux"></i> Linux CLI</span>
+                      <span><i className="fab fa-aws"></i> AWS</span>
+                      <span><i className="fab fa-docker"></i> Docker</span>
+                      <span><i className="fas fa-paper-plane"></i> Postman</span>
                       <span><i className="fab fa-figma"></i> Figma</span>
-                      {/* <span><i className="fab fa-jira"></i> Jira</span>
-                      <span><i className="fab fa-trello"></i> Trello</span> */}
-                      <span><i className="fab fa-linux"></i> Linux</span>
-                      <span><i className="fab fa-windows"></i> Windows</span>
+                      <span><i className="fas fa-video"></i> Premiere Pro</span>
                     </div>
                   </div>
                 </div>
@@ -250,174 +210,92 @@ export default function Page() {
                 marginTop: "3rem",
               }}
             >
-              <div className="project-card">
-                <Image
-                  src="/img/repCounterSS.png"
-                  alt="Rep Counter Web App Screenshot"
-                  width={960}
-                  height={540}
-                  style={{
-                    width: "100%",
-                    height: "200px",
-                    objectFit: "cover",
-                    borderRadius: "var(--radius-sm)",
-                    marginBottom: "1.5rem",
-                  }}
-                />
-                <h3>Health bot</h3>
-                <p>
-                  A multi-player story-telling web game for 3-5 players. Its
-                  usage of sockets to allow for concurrent gameplay, connecting
-                  friends across the internet.
-                </p>
-                <div className="project-tech">
-                  <span>NODE.JS (SOCKET.IO)</span>
-                  <span>REACT.JS</span>
-                  <span>MONGODB</span>
+              <a href="https://github.com/ritoban23/crypto-protocol-auditor" target="_blank" rel="noopener noreferrer" className="project-card" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
+                <div style={{ padding: '1rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <h3>Crypto Protocol Auditor</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                  </div>
+                  <p>
+                    It's an AI-powered auditor, built on MindsDB, that unifies this scattered crypto/web3 data into one conversational interface.
+                  </p>
+                  <div className="project-tech">
+                    <span>MINDSDB</span>
+                    <span>NEXT.JS</span>
+                    <span>PYTHON</span>
+                    <span>LLM APIS</span>
+                    <span>SQL</span>
+                    <span>REST APIS</span>
+                  </div>
                 </div>
-              </div>
-              <div className="project-card">
-                <Image
-                  src="/img/portfolio-02.jpg"
-                  alt="Project placeholder"
-                  width={960}
-                  height={540}
-                  style={{
-                    width: "100%",
-                    height: "200px",
-                    objectFit: "cover",
-                    borderRadius: "var(--radius-sm)",
-                    marginBottom: "1.5rem",
-                  }}
-                />
-                <h3>portfolio website</h3>
-                <p>
-                  A responsive portfolio website built with Next.js and modern
-                  web technologies. Features smooth animations and clean design.
-                </p>
-                <div className="project-tech">
-                  <span>NEXT.JS</span>
-                  <span>TYPESCRIPT</span>
-                  <span>CSS3</span>
+              </a>
+              <a href="https://github.com/ritoban23/gh-showcase" target="_blank" rel="noopener noreferrer" className="project-card" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
+                <div style={{ padding: '1rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <h3>gh-showcase</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                  </div>
+                  <p>
+                    Drop-in React component to visualize your GitHub activity, PR breakdown, and developer DNA in seconds.
+                  </p>
+                  <div className="project-tech">
+                    <span>REACT</span>
+                    <span>TYPESCRIPT</span>
+                    <span>GITHUB API</span>
+                    <span>NPM PACKAGE</span>
+                  </div>
                 </div>
-              </div>
-              <div className="project-card">
-                <Image
-                  src="/img/portfolio-03.jpg"
-                  alt="Project placeholder"
-                  width={960}
-                  height={540}
-                  style={{
-                    width: "100%",
-                    height: "200px",
-                    objectFit: "cover",
-                    borderRadius: "var(--radius-sm)",
-                    marginBottom: "1.5rem",
-                  }}
-                />
-                <h3>Wallet geenrator</h3>
-                <p>
-                  A full-stack web application with user authentication,
-                  real-time features, and responsive design for optimal user
-                  experience.
-                </p>
-                <div className="project-tech">
-                  <span>REACT</span>
-                  <span>NODE.JS</span>
-                  <span>POSTGRESQL</span>
+              </a>
+              <a href="https://github.com/ritoban23/orbWallet" target="_blank" rel="noopener noreferrer" className="project-card" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
+                <div style={{ padding: '1rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <h3>orbWallet</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                  </div>
+                  <p>
+                    A web wallet for Solana & Ethereum. Create multiple wallets, generate public/private key pairs.
+                  </p>
+                  <div className="project-tech">
+                    <span>SOLANA</span>
+                    <span>ETHEREUM</span>
+                    <span>WEB3</span>
+                    <span>CRYPTOGRAPHY</span>
+                  </div>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
         </section>
 
-        {/* Certifications */}
-        <section id="certifications" data-section className="myWork reveal">
+        {/* Activity */}
+        <section id="activity" data-section className="reveal">
           <div className="container">
-            <h2 className="sectionTitle">certifications</h2>
-            <div className="cert-grid">
-              <div className="cert-card">
-                <Image
-                  src="/img/portfolio-01.jpg"
-                  alt="Certification placeholder"
-                  width={300}
-                  height={200}
-                  style={{
-                    width: "100%",
-                    height: "150px",
-                    objectFit: "cover",
-                    borderRadius: "var(--radius-sm)",
-                    marginBottom: "1rem",
-                  }}
-                />
-                <h4>Certification Name</h4>
-                <p>Issued by: Issuing Body</p>
-              </div>
-              <div className="cert-card">
-                <Image
-                  src="/img/portfolio-02.jpg"
-                  alt="Certification placeholder"
-                  width={300}
-                  height={200}
-                  style={{
-                    width: "100%",
-                    height: "150px",
-                    objectFit: "cover",
-                    borderRadius: "var(--radius-sm)",
-                    marginBottom: "1rem",
-                  }}
-                />
-                <h4>Certification Name</h4>
-                <p>Issued by: Issuing Body</p>
-              </div>
-              <div className="cert-card">
-                <Image
-                  src="/img/portfolio-03.jpg"
-                  alt="Certification placeholder"
-                  width={300}
-                  height={200}
-                  style={{
-                    width: "100%",
-                    height: "150px",
-                    objectFit: "cover",
-                    borderRadius: "var(--radius-sm)",
-                    marginBottom: "1rem",
-                  }}
-                />
-                <h4>Certification Name</h4>
-                <p>Issued by: Issuing Body</p>
-              </div>
+            <h2 className="sectionTitle">activity</h2>
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '3rem' }}>
+              <ShowcaseWrapper username="ritoban23" />
             </div>
           </div>
         </section>
 
-        {/* Achievements */}
-        <section id="achievements" data-section className="myWork reveal">
+        {/* Win Log */}
+        <section id="win-log" data-section className="myWork reveal">
           <div className="container">
-            <h2 className="sectionTitle">achievements</h2>
-            <div className="achievements-grid">
-              <div className="achievement-card">
-                <div className="achievement-icon">
-                  <i className="fas fa-trophy"></i>
-                </div>
-                <h3>Achievement Title 1</h3>
-                <p>A short description of the achievement. This can be a competition you won, a certification you earned, or a project you are proud of.</p>
-              </div>
-              <div className="achievement-card">
-                <div className="achievement-icon">
-                  <i className="fas fa-award"></i>
-                </div>
-                <h3>Achievement Title 2</h3>
-                <p>A short description of the achievement. This can be a competition you won, a certification you earned, or a project you are proud of.</p>
-              </div>
-              <div className="achievement-card">
-                <div className="achievement-icon">
-                  <i className="fas fa-medal"></i>
-                </div>
-                <h3>Achievement Title 3</h3>
-                <p>A short description of the achievement. This can be a competition you won, a certification you earned, or a project you are proud of.</p>
-              </div>
-            </div>
+            <h2 className="sectionTitle">win log</h2>
+            <WinLogGrid images={[
+              'akash.jpg', 'digitalocean.jpg', 'docsgpt.jpg', 'dotnet.jpg', 
+              'flexprice.jpg', 'globo.jpg', 'interledger.jpg', 'keploy.jpg', 
+              'mindsdb1.jpg', 'mindsdb2.jpg', 'raycast.jpg', 'inweave.jpg', 'superdevs.jpg',
+              'aevy.jpg', 'mlh.jpg', 'mindsdb3.jpg'
+            ]} />
           </div>
         </section>
 
@@ -425,23 +303,24 @@ export default function Page() {
         <section id="contact" data-section className="reveal">
           <div className="container" style={{ textAlign: "center" }}>
             <h2 className="sectionTitle">contact</h2>
-            <p>
+            <p style={{ marginBottom: '2rem', fontSize: '1.2rem', color: 'var(--clr-neutral)' }}>
               Have a project or idea? I'm open to collaborations and
               internships.
             </p>
-            <p>
-              <a className="btn" href="mailto:ankudutt101@gmail.com">
-                Email me
+            
+            <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+              <a href="mailto:ankudutt101@gmail.com" className="contact-card" style={{ textDecoration: 'none', color: 'inherit', minWidth: '200px' }}>
+                <i className="fas fa-envelope" style={{ fontSize: '2rem', color: 'var(--clr-accent)', marginBottom: '1rem' }}></i>
+                <h3 style={{ marginBottom: '0.5rem' }}>Email</h3>
+                <p>ankudutt101@gmail.com</p>
               </a>
-              <a
-                className="btn btnOutline"
-                href="https://github.com/ritoban23"
-                target="_blank"
-                rel="noreferrer"
-              >
-                GitHub
+              
+              <a href="https://github.com/ritoban23" target="_blank" rel="noreferrer" className="contact-card" style={{ textDecoration: 'none', color: 'inherit', minWidth: '200px' }}>
+                <i className="fab fa-github" style={{ fontSize: '2rem', color: 'var(--clr-accent)', marginBottom: '1rem' }}></i>
+                <h3 style={{ marginBottom: '0.5rem' }}>GitHub</h3>
+                <p>@ritoban23</p>
               </a>
-            </p>
+            </div>
           </div>
         </section>
       </main>
@@ -451,6 +330,7 @@ export default function Page() {
           tabs 😛
         </p>
       </footer>
+      <BackToTop />
     </>
   );
 }

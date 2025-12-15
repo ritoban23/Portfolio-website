@@ -9,7 +9,16 @@ export default function Topbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 8);
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      const progressBar = document.getElementById('scroll-progress');
+      if (progressBar) {
+        progressBar.style.width = scrolled + "%";
+      }
+    };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener('scroll', onScroll);
@@ -38,9 +47,28 @@ export default function Topbar() {
 
   return (
     <header className={`header ${scrolled ? 'scrolled' : ''}`}>
+      <div id="scroll-progress" style={{
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        height: '3px',
+        background: 'var(--clr-accent)',
+        width: '0%',
+        transition: 'width 0.1s ease-out',
+        zIndex: 1001
+      }}></div>
       <div className="logo">
         <Link href="#home">
-          <Image src="/img/devrito.png" alt="Ritoban Dutta" width={60} height={60} style={{objectFit: 'contain'}} />
+          <Image 
+            src="/img/devrito.png" 
+            alt="Ritoban Dutta" 
+            width={60} 
+            height={60} 
+            style={{
+              objectFit: 'contain',
+              filter: 'invert(1) brightness(2)' 
+            }} 
+          />
         </Link>
       </div>
       

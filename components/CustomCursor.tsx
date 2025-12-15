@@ -5,22 +5,28 @@ import { useState, useEffect, useRef } from 'react';
 const CustomCursor = () => {
   const [isClient, setIsClient] = useState(false);
   const cursorRef = useRef<HTMLDivElement>(null);
+  const trailRefs = useRef<(HTMLDivElement | null)[]>([]);
+  
+  // Use refs for mutable values to avoid re-renders
+  const mousePosition = useRef({ x: 0, y: 0 });
+  const cursorPosition = useRef({ x: 0, y: 0 });
+  const trailPositions = useRef<Array<{ x: number; y: number }>>([]);
+  
   const [isPointer, setIsPointer] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
-  const [trailPositions, setTrailPositions] = useState<Array<{ x: number; y: number }>>([]);
 
   useEffect(() => {
     setIsClient(true);
+    // Initialize trail positions
+    trailPositions.current = Array(8).fill({ x: 0, y: 0 });
   }, []);
 
   useEffect(() => {
     if (!isClient) return;
 
     const onMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-      setIsVisible(true);
+      mousePosition.current = { x: e.clientX, y: e.clientY };
+      if (!isVisible) setIsVisible(true);
     };
 
     const onMouseOver = (e: MouseEvent) => {
@@ -42,21 +48,34 @@ const CustomCursor = () => {
 
     let animationFrameId: number;
 
-    const animateCursor = (currentTime: number) => {
-      setCursorPosition(prevPosition => {
-        const dx = mousePosition.x - prevPosition.x;
-        const dy = mousePosition.y - prevPosition.y;
-        const easing = 0.15;
-        return {
-          x: prevPosition.x + dx * easing,
-          y: prevPosition.y + dy * easing,
-        };
-      });
+    const animateCursor = () => {
+      // Update main cursor position
+      const dx = mousePosition.current.x - cursorPosition.current.x;
+      const dy = mousePosition.current.y - cursorPosition.current.y;
+      const easing = 0.15;
+      
+      cursorPosition.current.x += dx * easing;
+      cursorPosition.current.y += dy * easing;
 
-      setTrailPositions(prevTrails => {
-        const newTrails = [...prevTrails];
-        newTrails.unshift({ ...cursorPosition });
-        return newTrails.slice(0, 8);
+      if (cursorRef.current) {
+        cursorRef.current.style.left = `${cursorPosition.current.x}px`;
+        cursorRef.current.style.top = `${cursorPosition.current.y}px`;
+      }
+
+      // Update trails
+      // Shift positions
+      const newTrails = [...trailPositions.current];
+      newTrails.pop();
+      newTrails.unshift({ ...cursorPosition.current });
+      trailPositions.current = newTrails;
+
+      // Apply to DOM
+      trailRefs.current.forEach((ref, index) => {
+        if (ref) {
+            const pos = trailPositions.current[index];
+            ref.style.left = `${pos.x}px`;
+            ref.style.top = `${pos.y}px`;
+        }
       });
 
       animationFrameId = requestAnimationFrame(animateCursor);
@@ -70,7 +89,7 @@ const CustomCursor = () => {
       document.removeEventListener('mouseleave', onMouseLeave);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [isClient, mousePosition, cursorPosition]);
+  }, [isClient, isVisible]);
 
   if (!isClient) {
     return null;
@@ -83,23 +102,24 @@ const CustomCursor = () => {
         ref={cursorRef}
         className={`custom-cursor ${isPointer ? 'pointer' : ''} ${isVisible ? 'visible' : ''}`}
         style={{
-          left: `${cursorPosition.x}px`,
-          top: `${cursorPosition.y}px`,
-          transform: 'translate(-50%, -50%)'
+          transform: 'translate(-50%, -50%)',
+          pointerEvents: 'none',
+          position: 'fixed',
+          zIndex: 9999
         }}
       />
 
       {/* Cursor trails */}
-      {trailPositions.map((pos, index) => (
+      {Array.from({ length: 8 }).map((_, index) => (
         <div
           key={index}
+          ref={(el) => { trailRefs.current[index] = el; }}
           className="cursor-trail"
           style={{
-            left: `${pos.x}px`,
-            top: `${pos.y}px`,
             transform: 'translate(-50%, -50%)',
-            opacity: (8 - index) / 8,
-            animationDelay: `${index * 0.05}s`
+             pointerEvents: 'none',
+             position: 'fixed',
+             zIndex: 9998
           }}
         />
       ))}
