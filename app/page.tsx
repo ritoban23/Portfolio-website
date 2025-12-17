@@ -205,7 +205,7 @@ export default function Page() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit,minmax(400px,1fr))",
+                gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
                 gap: "2rem",
                 marginTop: "3rem",
               }}
@@ -301,7 +301,7 @@ export default function Page() {
 
         {/* Contact */}
         <section id="contact" data-section className="reveal">
-          <div className="container" style={{ textAlign: "center" }}>
+          <div className="container">
             <h2 className="sectionTitle">contact</h2>
             <p style={{ marginBottom: '2rem', fontSize: '1.2rem', color: 'var(--clr-neutral)' }}>
               Have a project or idea? I'm open to collaborations and

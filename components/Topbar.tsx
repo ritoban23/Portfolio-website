@@ -122,6 +122,21 @@ export default function Topbar() {
           <li><Link className="navLink" href="#projects">Projects</Link></li>
           <li><Link className="navLink" href="#contact">Contact</Link></li>
         </ul>
+        
+        <div className="social-icons-mobile">
+          <a href="mailto:ankudutt101@gmail.com" aria-label="Email">
+            <FaEnvelope />
+          </a>
+          <a href="https://github.com/ritoban23" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <FaGithub />
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <FaLinkedin />
+          </a>
+          <a href="https://medium.com" target="_blank" rel="noopener noreferrer" aria-label="Medium">
+            <FaMedium />
+          </a>
+        </div>
       </nav>
     </header>
   );

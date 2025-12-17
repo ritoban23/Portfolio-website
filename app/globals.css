@@ -100,11 +100,11 @@ section{padding:3.5em 1em}
 
 /* Social Icons */
 .social-icons {
-  display: flex;
+  display: none; /* Hidden by default on mobile */
   align-items: center;
   gap: 1rem;
   position: relative;
-  z-index: 100; /* Ensure social icons are above everything */
+  z-index: 100;
 }
 
 .social-icons a {
@@ -150,6 +150,14 @@ section{padding:3.5em 1em}
   .menuBtn {
     display: none;
   }
+
+  .social-icons {
+    display: flex; /* Show on desktop */
+  }
+  
+  .social-icons-mobile {
+    display: none; /* Hide mobile icons on desktop */
+  }
 }
 
 /* Hamburger */
@@ -184,7 +192,7 @@ section{padding:3.5em 1em}
 /* Typography & UI */
 h1,h2,h3{line-height:1;margin:0}
 h1{font-size:var(--fs-h1)}h2{font-size:var(--fs-h2)}h3{font-size:var(--fs-h3)}
-.sectionTitle{margin-bottom:.25em;font-weight:var(--fw-semibold);position:relative}
+.sectionTitle{margin-bottom:.25em;font-weight:var(--fw-semibold);position:relative;text-align:center}
 .sectionTitle::before{content:'/';color:var(--clr-accent);margin-right:0.5em;font-weight:300}
 .sectionSub{margin:0;font-size:var(--fs-h3);font-weight:var(--fw-reg)}
 .pill{display:inline-block;background:rgba(233,30,99,.1);color:var(--clr-accent);padding:.5em 1em;border-radius:999px;font-family:var(--ff-secondary);margin-bottom:1.25em}
@@ -245,6 +253,7 @@ section{padding:5em 1em}
 
 /* Footer */
 .footer{background:var(--clr-dark);color:var(--clr-neutral);text-align:center;padding:1.5em 0;border-top:1px solid rgba(226, 232, 240, 0.1)}
+.footer p{max-width:1100px;margin:0 auto;padding:0 1rem}
 .footer a{color:var(--clr-accent);text-decoration:none}
 
 /* Animations */
@@ -262,6 +271,10 @@ section{padding:5rem 1rem}
   border-radius:var(--radius);
   padding:2rem;
   transition:all .3s ease;
+  height: 100%; /* Ensure cards take full height */
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 .project-card:hover{
   transform:translateY(-5px);
@@ -277,12 +290,13 @@ section{padding:5rem 1rem}
   color:var(--clr-muted);
   line-height:1.6;
   margin:0 0 1.5rem 0;
+  flex-grow: 1; /* Allow description to take available space */
 }
 .project-tech{
   display:flex;
   flex-wrap:wrap;
   gap:0.5rem;
-  margin-top:1rem;
+  margin-top:auto; /* Push tech stack to bottom */
 }
 .project-tech span{
   background:rgba(233,30,99,.15);
@@ -291,6 +305,22 @@ section{padding:5rem 1rem}
   border-radius:var(--radius-sm);
   font-size:0.8rem;
   font-family:var(--ff-secondary);
+}
+
+/* Responsive adjustments for project cards */
+@media (max-width: 768px) {
+  .project-card {
+    padding: 1.5rem;
+  }
+  
+  .project-card h3 {
+    font-size: 1.25rem;
+  }
+  
+  .project-tech span {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+  }
 }
 
 /* Contact section styling */
@@ -526,6 +556,21 @@ section{padding:5rem 1rem}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  :root {
+    --fs-h1: 2.5rem;
+    --fs-h2: 1.75rem;
+    --fs-h3: 1rem;
+    --fs-body: 0.95rem;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  section {
+    padding: 3rem 1rem;
+  }
+
   .tech-row {
     flex-direction: column;
     align-items: flex-start;
@@ -544,6 +589,48 @@ section{padding:5rem 1rem}
   .tech-items span {
     font-size: 0.85rem;
     padding: 0.2rem 0.4rem;
+  }
+  
+  .experience-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .experience-tabs {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .experience-tab {
+    text-align: center;
+    border-right: none;
+    border-bottom: 2px solid transparent;
+    padding: 0.75rem 1rem;
+  }
+  
+  .experience-tab:hover,
+  .experience-tab.active {
+    border-right-color: transparent;
+    border-bottom-color: var(--clr-accent);
+  }
+
+  .about-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .about-image {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: center;
+    max-width: 250px;
+  }
+  
+  .about-content {
+    grid-column: 1;
+    grid-row: 2;
   }
 }
 
