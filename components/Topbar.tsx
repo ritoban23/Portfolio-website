@@ -62,8 +62,8 @@ export default function Topbar() {
           <Image 
             src="/img/devrito.png" 
             alt="Ritoban Dutta" 
-            width={60} 
-            height={60} 
+            width={40} 
+            height={40} 
             style={{
               objectFit: 'contain',
               filter: 'invert(1) brightness(2)' 
