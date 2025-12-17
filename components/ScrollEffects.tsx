@@ -1,7 +1,10 @@
 "use client";
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function ScrollEffects(){
+  const pathname = usePathname();
+
   useEffect(() => {
     // Reveal elements
   const reveals = Array.from(document.querySelectorAll('.reveal')) as HTMLElement[];
@@ -34,7 +37,7 @@ export default function ScrollEffects(){
     sections.forEach(s => secObs.observe(s));
 
     return () => { revealObs.disconnect(); secObs.disconnect(); };
-  }, []);
+  }, [pathname]);
 
   return null;
 }

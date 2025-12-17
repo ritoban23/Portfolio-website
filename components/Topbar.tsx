@@ -2,11 +2,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { FaGithub, FaLinkedin, FaMedium, FaEnvelope } from 'react-icons/fa';
 
 export default function Topbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => {
@@ -51,7 +53,7 @@ export default function Topbar() {
         position: 'absolute',
         bottom: 0,
         left: 0,
-        height: '3px',
+        height: '2px',
         background: 'var(--clr-accent)',
         width: '0%',
         transition: 'width 0.1s ease-out',
@@ -62,8 +64,8 @@ export default function Topbar() {
           <Image 
             src="/img/devrito.png" 
             alt="Ritoban Dutta" 
-            width={40} 
-            height={40} 
+            width={50} 
+            height={50} 
             style={{
               objectFit: 'contain',
               filter: 'invert(1) brightness(2)' 
@@ -75,10 +77,17 @@ export default function Topbar() {
       {/* Desktop Navigation */}
       <nav className="nav-desktop" aria-label="Primary">
         <ul className="navList">
-          <li><Link className="navLink" href="#home">Home</Link></li>
-          <li><Link className="navLink" href="#about">About</Link></li>
-          <li><Link className="navLink" href="#experience">Experience</Link></li>
-          <li><Link className="navLink" href="#projects">Projects</Link></li>
+          <li><Link className="navLink" href="/#home">Home</Link></li>
+          <li><Link className="navLink" href="/#about">About</Link></li>
+          <li><Link className="navLink" href="/#experience">Experience</Link></li>
+          <li><Link className="navLink" href="/#projects">Projects</Link></li>
+          <li>
+            {pathname === '/beyond' ? (
+              <Link className="navLink special-nav-btn" href="/">Portfolio</Link>
+            ) : (
+              <Link className="navLink special-nav-btn" href="/beyond">Beyond Code</Link>
+            )}
+          </li>
         </ul>
       </nav>
       
@@ -116,11 +125,18 @@ export default function Topbar() {
       {/* Mobile Navigation */}
       <nav id="primary-nav" className={`nav ${open ? 'open' : ''}`} aria-label="Primary">
         <ul className="navList" onClick={() => setOpen(false)} role="menubar">
-          <li><Link className="navLink" href="#home">Home</Link></li>
-          <li><Link className="navLink" href="#about">About</Link></li>
-          <li><Link className="navLink" href="#experience">Experience</Link></li>
-          <li><Link className="navLink" href="#projects">Projects</Link></li>
-          <li><Link className="navLink" href="#contact">Contact</Link></li>
+          <li><Link className="navLink" href="/#home">Home</Link></li>
+          <li><Link className="navLink" href="/#about">About</Link></li>
+          <li><Link className="navLink" href="/#experience">Experience</Link></li>
+          <li><Link className="navLink" href="/#projects">Projects</Link></li>
+          <li>
+            {pathname === '/beyond' ? (
+              <Link className="navLink special-nav-btn" href="/">Portfolio</Link>
+            ) : (
+              <Link className="navLink special-nav-btn" href="/beyond">Beyond Code</Link>
+            )}
+          </li>
+          <li><Link className="navLink" href="/#contact">Contact</Link></li>
         </ul>
         
         <div className="social-icons-mobile">
