@@ -1,10 +1,10 @@
-import Topbar from "@/components/Topbar";
+import MorphicNavbar from "@/components/MorphicNavbar";
 import BackToTop from "@/components/BackToTop";
 
 export default function BeyondPage() {
   return (
     <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-      <Topbar />
+      <MorphicNavbar />
       <main style={{ flex: "1", display: "flex", alignItems: "center", justifyContent: "center" }}>
         <section className="reveal" style={{ textAlign: "center" }}>
           <div className="container">

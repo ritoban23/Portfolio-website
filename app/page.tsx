@@ -1,20 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
-import ThreeHero from "@/components/ThreeHero";
-import Topbar from "@/components/Topbar";
+import MorphicNavbar from "@/components/MorphicNavbar";
 import ExperienceSection from "@/components/ExperienceSection";
-import ParticleBackground from "@/components/ParticleBackground";
 import AnimatedText from "@/components/AnimatedText";
 import ShowcaseWrapper from "@/components/ShowcaseWrapper";
 import WinLogGrid from "@/components/WinLogGrid";
+import ProjectsCarousel from "@/components/ProjectsCarousel";
 import BackToTop from "@/components/BackToTop";
+import TechStackSection from "@/components/TechStackSection";
+import HeaderControls from "@/components/HeaderControls";
 
 export default function Page() {
   return (
     <>
-      <Topbar />
-      <ParticleBackground />
+      <HeaderControls />
+      <MorphicNavbar />
       <main>
         {/* Home */}
         <section
@@ -28,9 +29,6 @@ export default function Page() {
             alignItems: "center",
           }}
         >
-          <Suspense fallback={null}>
-            <ThreeHero />
-          </Suspense>
           <div
             className="container"
             style={{ position: "relative", zIndex: 10, textAlign: "center" }}
@@ -134,50 +132,7 @@ export default function Page() {
                 >
                   Here are some technologies I have been working with:
                 </p>
-                <div className="tech-compact">
-                  {/* Programming Languages */}
-                  <div className="tech-row">
-                    <span className="tech-label">Languages:</span>
-                    <div className="tech-items">
-                      <span><i className="fab fa-js-square"></i> JavaScript</span>
-                      <span><i className="fas fa-code"></i> TypeScript</span>
-                      <span><i className="fab fa-html5"></i> HTML</span>
-                      <span><i className="fab fa-css3-alt"></i> CSS</span>
-                      <span><i className="fas fa-database"></i> SQL</span>
-                      <span><i className="fas fa-file-code"></i> C++</span>
-                      <span><i className="fab fa-python"></i> Python</span>
-                      <span><i className="fab fa-node-js"></i> NodeJS</span>
-                    </div>
-                  </div>
-
-                  {/* Frameworks */}
-                  <div className="tech-row">
-                    <span className="tech-label">Frameworks:</span>
-                    <div className="tech-items">
-                      <span><i className="fab fa-react"></i> React/NextJS</span>
-                      <span><i className="fas fa-server"></i> ExpressJS</span>
-                      <span><i className="fas fa-database"></i> PostgreSQL</span>
-                      <span><i className="fas fa-database"></i> MongoDB</span>
-                      <span><i className="fab fa-css3-alt"></i> Tailwind CSS</span>
-                    </div>
-                  </div>
-
-                  {/* Tools */}
-                  <div className="tech-row">
-                    <span className="tech-label">Tools:</span>
-                    <div className="tech-items">
-                      <span><i className="fab fa-git-alt"></i> Git</span>
-                      <span><i className="fab fa-github"></i> GitHub</span>
-                      <span><i className="fas fa-code"></i> VS Code</span>
-                      <span><i className="fab fa-linux"></i> Linux CLI</span>
-                      <span><i className="fab fa-aws"></i> AWS</span>
-                      <span><i className="fab fa-docker"></i> Docker</span>
-                      <span><i className="fas fa-paper-plane"></i> Postman</span>
-                      <span><i className="fab fa-figma"></i> Figma</span>
-                      <span><i className="fas fa-video"></i> Premiere Pro</span>
-                    </div>
-                  </div>
-                </div>
+                <TechStackSection />
                 <p style={{ color: "var(--clr-neutral)", marginTop: "1.5rem" }}>
                   When I’m not coding, I’m usually side-questing: dabbling in
                   design, music, weaving little bits of
@@ -188,91 +143,53 @@ export default function Page() {
           </div>
         </section>
 
-        {/* Experience - Commented Out */}
-        {/*
+
+        {/* Experience */}
         <section id="experience" data-section className="myServices reveal">
           <div className="container">
             <h2 className="sectionTitle">experience</h2>
             <ExperienceSection />
           </div>
         </section>
-        */}
 
         {/* Projects */}
         <section id="projects" data-section className="myWork reveal">
           <div className="container">
             <h2 className="sectionTitle">pet projects</h2>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-                gap: "2rem",
-                marginTop: "3rem",
-              }}
-            >
-              <a href="https://github.com/ritoban23/crypto-protocol-auditor" target="_blank" rel="noopener noreferrer" className="project-card" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
-                <div style={{ padding: '1rem' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <h3>Crypto Protocol Auditor</h3>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="7" y1="17" x2="17" y2="7"></line>
-                      <polyline points="7 7 17 7 17 17"></polyline>
-                    </svg>
-                  </div>
-                  <p>
-                    It's an AI-powered auditor, built on MindsDB, that unifies this scattered crypto/web3 data into one conversational interface.
-                  </p>
-                  <div className="project-tech">
-                    <span>MINDSDB</span>
-                    <span>NEXT.JS</span>
-                    <span>PYTHON</span>
-                    <span>LLM APIS</span>
-                    <span>SQL</span>
-                    <span>REST APIS</span>
-                  </div>
-                </div>
-              </a>
-              <a href="https://github.com/ritoban23/gh-showcase" target="_blank" rel="noopener noreferrer" className="project-card" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
-                <div style={{ padding: '1rem' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <h3>gh-showcase</h3>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="7" y1="17" x2="17" y2="7"></line>
-                      <polyline points="7 7 17 7 17 17"></polyline>
-                    </svg>
-                  </div>
-                  <p>
-                    Drop-in React component to visualize your GitHub activity, PR breakdown, and developer DNA in seconds.
-                  </p>
-                  <div className="project-tech">
-                    <span>REACT</span>
-                    <span>TYPESCRIPT</span>
-                    <span>GITHUB API</span>
-                    <span>NPM PACKAGE</span>
-                  </div>
-                </div>
-              </a>
-              <a href="https://github.com/ritoban23/orbWallet" target="_blank" rel="noopener noreferrer" className="project-card" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
-                <div style={{ padding: '1rem' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <h3>orbWallet</h3>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="7" y1="17" x2="17" y2="7"></line>
-                      <polyline points="7 7 17 7 17 17"></polyline>
-                    </svg>
-                  </div>
-                  <p>
-                    A web wallet for Solana & Ethereum. Create multiple wallets, generate public/private key pairs.
-                  </p>
-                  <div className="project-tech">
-                    <span>SOLANA</span>
-                    <span>ETHEREUM</span>
-                    <span>WEB3</span>
-                    <span>CRYPTOGRAPHY</span>
-                  </div>
-                </div>
-              </a>
-            </div>
+            <ProjectsCarousel
+              projects={[
+                {
+                  title: "Crypto Protocol Auditor",
+                  description: "AI-powered auditor built on MindsDB that unifies scattered crypto/web3 data into one conversational interface.",
+                  tags: ["MindsDB", "Next.js", "Python", "LLM APIs"],
+                  link: "https://github.com/ritoban23/crypto-protocol-auditor",
+                },
+                {
+                  title: "gh-showcase",
+                  description: "Drop-in React component to visualize your GitHub activity, PR breakdown, and developer DNA in seconds.",
+                  tags: ["React", "TypeScript", "GitHub API", "NPM"],
+                  link: "https://github.com/ritoban23/gh-showcase",
+                },
+                {
+                  title: "orbWallet",
+                  description: "A web wallet for Solana & Ethereum. Create multiple wallets, generate public/private key pairs.",
+                  tags: ["Solana", "Ethereum", "Web3", "Cryptography"],
+                  link: "https://github.com/ritoban23/orbWallet",
+                },
+                {
+                  title: "DevOps Pipeline",
+                  description: "Automated CI/CD pipeline with Docker, Kubernetes orchestration, and monitoring dashboards.",
+                  tags: ["Docker", "Kubernetes", "GitHub Actions", "Terraform"],
+                  link: "https://github.com/ritoban23",
+                },
+                {
+                  title: "ML Portfolio Optimizer",
+                  description: "Machine learning model for portfolio optimization using modern portfolio theory and reinforcement learning.",
+                  tags: ["Python", "TensorFlow", "Finance", "ML"],
+                  link: "https://github.com/ritoban23",
+                },
+              ]}
+            />
           </div>
         </section>
 
@@ -291,8 +208,8 @@ export default function Page() {
           <div className="container">
             <h2 className="sectionTitle">win log</h2>
             <WinLogGrid images={[
-              'akash.jpg', 'digitalocean.jpg', 'docsgpt.jpg', 'dotnet.jpg', 
-              'flexprice.jpg', 'globo.jpg', 'interledger.jpg', 'keploy.jpg', 
+              'akash.jpg', 'digitalocean.jpg', 'docsgpt.jpg', 'dotnet.jpg',
+              'flexprice.jpg', 'globo.jpg', 'interledger.jpg', 'keploy.jpg',
               'mindsdb1.jpg', 'mindsdb2.jpg', 'raycast.jpg', 'inweave.jpg', 'superdevs.jpg',
               'aevy.jpg', 'mlh.jpg', 'mindsdb3.jpg'
             ]} />
@@ -307,14 +224,14 @@ export default function Page() {
               Have a project or idea? I'm open to collaborations and
               internships.
             </p>
-            
+
             <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '1rem' }}>
               <a href="mailto:ankudutt101@gmail.com" className="contact-card" style={{ textDecoration: 'none', color: 'inherit', minWidth: '200px' }}>
                 <i className="fas fa-envelope" style={{ fontSize: '2rem', color: 'var(--clr-accent)', marginBottom: '1rem' }}></i>
                 <h3 style={{ marginBottom: '0.5rem' }}>Email</h3>
                 <p>ankudutt101@gmail.com</p>
               </a>
-              
+
               <a href="https://github.com/ritoban23" target="_blank" rel="noreferrer" className="contact-card" style={{ textDecoration: 'none', color: 'inherit', minWidth: '200px' }}>
                 <i className="fab fa-github" style={{ fontSize: '2rem', color: 'var(--clr-accent)', marginBottom: '1rem' }}></i>
                 <h3 style={{ marginBottom: '0.5rem' }}>GitHub</h3>

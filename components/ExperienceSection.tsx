@@ -1,114 +1,95 @@
 "use client";
-import { useState } from 'react';
 
-interface ExperienceData {
+import { useState } from "react";
+
+interface Experience {
   id: string;
   company: string;
-  title: string;
-  date: string;
+  role: string;
+  location: string;
+  period: string;
   description: string[];
+  isCurrentRole?: boolean;
 }
 
-const experienceData: ExperienceData[] = [
+const experiences: Experience[] = [
   {
-    id: 'amazon',
-    company: 'AMAZON',
-    title: 'Associate Engineer @ Amazon',
-    date: 'MAY 2020 - APR 2021',
+    id: "datacurve",
+    company: "Datacurve (YC W24)",
+    role: "FOSS Engineer (Contract)",
+    location: "Remote",
+    period: "12/2025 – Present",
+    isCurrentRole: true,
     description: [
-      '▸ Developed a responsive React web page (the new Story Details) from scratch, both on client and server side, for an app with massive scale (2 billion daily requests).',
-      '▸ Iteratively built web experiences for 80 million users across high-traffic pages.',
-      '▸ Collaborated with senior engineers and product management following best practices for the full software development life cycle, including coding standards, code reviews, source control management, build processes, testing, and operations.'
-    ]
+      "Engineering robust solutions for critical bugs and features across major open-source ecosystems.",
+      "Generating data for State-of-the-Art LLMs, directly contributing to the 'Project Mars' program on Shipd platform.",
+    ],
   },
   {
-    id: 'wattpad',
-    company: 'WATTPAD',
-    title: 'Software Engineer @ Wattpad',
-    date: 'JAN 2019 - APR 2020',
+    id: "opensource",
+    company: "Open Source",
+    role: "Contributor",
+    location: "Global",
+    period: "06/2025 – Present",
+    isCurrentRole: true,
     description: [
-      '▸ Developed and maintained key features for the Wattpad platform serving millions of users worldwide.',
-      '▸ Collaborated with cross-functional teams to implement user-facing features and improve platform performance.',
-      '▸ Worked on both frontend and backend systems using modern web technologies and best practices.'
-    ]
+      "Big Tech & Systems: Merged production-grade code optimizations for Microsoft, Meta, Uber, and Apache.",
+      "AI & Data: Refactored core logic and testing suites for Pandas, MLflow, MindsDB, and Timescale.",
+      "Web Ecosystem: Improved performance, accessibility, and tooling for Storybook, WordPress, and Biome.",
+    ],
   },
   {
-    id: 'toronto',
-    company: 'UNIVERSITY OF TORONTO',
-    title: 'Research Assistant @ University of Toronto',
-    date: 'SEP 2018 - DEC 2018',
+    id: "fed",
+    company: "Federation of Entrepreneurship Development",
+    role: "Senior Creative Executive",
+    location: "Bhubaneswar, India",
+    period: "09/2022 – 12/2024",
     description: [
-      '▸ Conducted research in computer science and software engineering under faculty supervision.',
-      '▸ Contributed to academic projects and publications in the field of software development.',
-      '▸ Gained experience in research methodologies and academic writing.'
-    ]
+      "Architected responsive web solutions increasing engagement by ~25% across event pages.",
+      "Drove technical literacy for 200+ students through analytical workshops.",
+    ],
   },
-  {
-    id: 'contivizer',
-    company: 'CONTIVIZER RTC',
-    title: 'Software Developer @ Contivizer RTC',
-    date: 'JUN 2017 - AUG 2018',
-    description: [
-      '▸ Developed software solutions for real-time communication systems.',
-      '▸ Worked on system optimization and performance improvements.',
-      '▸ Collaborated with team members to deliver high-quality software products.'
-    ]
-  }
 ];
 
 export default function ExperienceSection() {
-  const [activeExperience, setActiveExperience] = useState('amazon');
-  const [exitingExperience, setExitingExperience] = useState<string | null>(null);
-
-  const handleTabClick = (experienceId: string) => {
-    if (experienceId !== activeExperience) {
-      setExitingExperience(activeExperience);
-      setActiveExperience(experienceId);
-      
-      // Clear the exiting state after animation completes
-      setTimeout(() => {
-        setExitingExperience(null);
-      }, 600);
-    }
-  };
+  const [selectedId, setSelectedId] = useState(experiences[0].id);
+  const selectedExp = experiences.find((exp) => exp.id === selectedId) || experiences[0];
 
   return (
-    <div className="experience-container">
-      <div className="experience-tabs">
-        {experienceData.map((exp) => (
+    <div className="experience-accordion">
+      {/* List on the left */}
+      <div className="experience-list">
+        {experiences.map((exp) => (
           <button
             key={exp.id}
-            className={`experience-tab ${activeExperience === exp.id ? 'active' : ''}`}
-            onClick={() => handleTabClick(exp.id)}
+            className={`experience-list-item ${selectedId === exp.id ? "active" : ""}`}
+            onClick={() => setSelectedId(exp.id)}
           >
-            {exp.company}
+            <span className="experience-list-company">{exp.company}</span>
+            <span className="experience-list-role">{exp.role}</span>
+            {exp.isCurrentRole && <span className="current-badge-small">Current</span>}
           </button>
         ))}
       </div>
-      <div className="experience-content">
-        {experienceData.map((exp) => {
-          let className = 'experience-item';
-          if (activeExperience === exp.id) {
-            className += ' active';
-          } else if (exitingExperience === exp.id) {
-            className += ' exiting';
-          }
-          
-          return (
-            <div
-              key={exp.id}
-              className={className}
-            >
-              <h3>{exp.title}</h3>
-              <p className="date">{exp.date}</p>
-              <div className="description">
-                {exp.description.map((desc, index) => (
-                  <p key={index}>{desc}</p>
-                ))}
-              </div>
-            </div>
-          );
-        })}
+
+      {/* Details on the right */}
+      <div className="experience-details">
+        <div className="experience-details-header">
+          <h3 className="experience-company">{selectedExp.company}</h3>
+          <span className="experience-role">{selectedExp.role}</span>
+        </div>
+        <div className="experience-details-meta">
+          <span className="experience-period">
+            {selectedExp.period}
+            {selectedExp.isCurrentRole && <span className="current-badge">Current</span>}
+          </span>
+          <span className="experience-location">📍 {selectedExp.location}</span>
+        </div>
+        <ul className="experience-description">
+          {selectedExp.description.map((item, idx) => (
+            <li key={idx}>{item}</li>
+          ))}
+        </ul>
       </div>
     </div>
   );
