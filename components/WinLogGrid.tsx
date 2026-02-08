@@ -19,8 +19,8 @@ export default function WinLogGrid({ images }: WinLogGridProps) {
     <>
       <div className="masonry-grid" style={{ marginTop: "3rem" }}>
         {images.map((img, index) => (
-          <div 
-            key={index} 
+          <div
+            key={index}
             className="masonry-item"
             onClick={() => setSelectedImage(img)}
             style={{ cursor: 'pointer' }}
@@ -53,16 +53,16 @@ export default function WinLogGrid({ images }: WinLogGridProps) {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               className="lightbox-content"
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e: React.MouseEvent) => e.stopPropagation()}
             >
               <Image
                 src={`/wins/${selectedImage}`}
                 alt="Selected Win"
                 width={1200}
                 height={800}
-                style={{ 
-                  maxWidth: "90vw", 
-                  maxHeight: "85vh", 
+                style={{
+                  maxWidth: "90vw",
+                  maxHeight: "85vh",
                   objectFit: "contain",
                   width: "auto",
                   height: "auto"
@@ -71,7 +71,7 @@ export default function WinLogGrid({ images }: WinLogGridProps) {
               <div className="lightbox-caption">
                 {getCaption(selectedImage)}
               </div>
-              <button 
+              <button
                 className="lightbox-close"
                 onClick={() => setSelectedImage(null)}
               >
