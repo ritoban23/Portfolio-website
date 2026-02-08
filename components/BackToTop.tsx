@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from 'react';
-import { FaArrowUp } from 'react-icons/fa';
+import { ArrowUp } from 'lucide-react';
 
 export default function BackToTop() {
   const [isVisible, setIsVisible] = useState(false);
@@ -53,7 +53,7 @@ export default function BackToTop() {
           onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
           aria-label="Back to top"
         >
-          <FaArrowUp />
+          <ArrowUp size={24} />
         </button>
       )}
     </>

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { FaGithub, FaLinkedin, FaMedium, FaEnvelope } from 'react-icons/fa';
+import { Github, Linkedin, Mail, BookOpen } from 'lucide-react';
 
 export default function Topbar() {
   const [open, setOpen] = useState(false);
@@ -35,11 +35,11 @@ export default function Topbar() {
         setOpen(false);
       }
     };
-    
+
     document.addEventListener('keydown', onKey);
     document.addEventListener('click', onClickOutside);
     document.body.style.overflow = open ? 'hidden' : '';
-    
+
     return () => {
       document.removeEventListener('keydown', onKey);
       document.removeEventListener('click', onClickOutside);
@@ -61,19 +61,19 @@ export default function Topbar() {
       }}></div>
       <div className="logo">
         <Link href="#home">
-          <Image 
-            src="/img/devrito.png" 
-            alt="Ritoban Dutta" 
-            width={50} 
-            height={50} 
+          <Image
+            src="/img/devrito.png"
+            alt="Ritoban Dutta"
+            width={50}
+            height={50}
             style={{
               objectFit: 'contain',
-              filter: 'invert(1) brightness(2)' 
-            }} 
+              filter: 'invert(1) brightness(2)'
+            }}
           />
         </Link>
       </div>
-      
+
       {/* Desktop Navigation */}
       <nav className="nav-desktop" aria-label="Primary">
         <ul className="navList">
@@ -90,23 +90,23 @@ export default function Topbar() {
           </li>
         </ul>
       </nav>
-      
+
       {/* Social Icons */}
       <div className="social-icons">
         <a href="mailto:ankudutt101@gmail.com" aria-label="Email">
-          <FaEnvelope />
+          <Mail size={18} />
         </a>
         <a href="https://github.com/ritoban23" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-          <FaGithub />
+          <Github size={18} />
         </a>
         <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <FaLinkedin />
+          <Linkedin size={18} />
         </a>
         <a href="https://medium.com" target="_blank" rel="noopener noreferrer" aria-label="Medium">
-          <FaMedium />
+          <BookOpen size={18} />
         </a>
       </div>
-      
+
       {/* Mobile Menu Button */}
       <button
         className="menuBtn"
@@ -121,7 +121,7 @@ export default function Topbar() {
       >
         <span className="hamburger" />
       </button>
-      
+
       {/* Mobile Navigation */}
       <nav id="primary-nav" className={`nav ${open ? 'open' : ''}`} aria-label="Primary">
         <ul className="navList" onClick={() => setOpen(false)} role="menubar">
@@ -138,19 +138,19 @@ export default function Topbar() {
           </li>
           <li><Link className="navLink" href="/#contact">Contact</Link></li>
         </ul>
-        
+
         <div className="social-icons-mobile">
           <a href="mailto:ankudutt101@gmail.com" aria-label="Email">
-            <FaEnvelope />
+            <Mail size={20} />
           </a>
           <a href="https://github.com/ritoban23" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <FaGithub />
+            <Github size={20} />
           </a>
           <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <FaLinkedin />
+            <Linkedin size={20} />
           </a>
           <a href="https://medium.com" target="_blank" rel="noopener noreferrer" aria-label="Medium">
-            <FaMedium />
+            <BookOpen size={20} />
           </a>
         </div>
       </nav>
